@@ -6,19 +6,21 @@
 library(raster)
 
 #Working directory
-setwd("D:/R-Kurs_WiSe2122/R-Kurs_WiSe2021-2022_Spatial_Analysis/Data")
+setwd("C:/Users/Johannes/Documents/1. Dokumente/3. Studium/2. Uni Bonn/1. Module/D2 R Kurs")
 
 getwd()
 
 dir()
 
 #Import LS8 subset
-img <- brick("D:/R-Kurs_WiSe2122/R-Kurs_WiSe2021-2022_Spatial_Analysis/Data/Landsat_8_all/LC081960252020091901RT-SC20200925100850.tif")
+img <- brick("LC08_Bonn1.tif")
 img
 
 #Import shapefile containing training data
-shp <- shapefile("training_data.shp")
+shp <- shapefile("training_data2.shp")
 shp
+
+#crs(shp) <- "+proj=utm +zone=32 +datum=WGS84 +units=m +no_defs"
 
 #Check CRS
 compareCRS(img,shp)
@@ -42,11 +44,12 @@ smp <- extract(img, shp, df = TRUE)
 
 
 #Matching ID of smp and class of shp to new column "cl", delete "ID"-column
-smp$cl <- as.factor(shp$class[match(smp$ID, seq(nrow(shp)))])
+smp$cl <- as.factor(shp$Class[match(smp$ID, seq(nrow(shp)))])
 smp <- smp[-1]
 
 #Save dataframe to your wd
 save(smp, file = "smp.rda")
+remove(smp)
 
 #Load dataframe from your wd
 load(file = "smp.rda")
@@ -87,3 +90,4 @@ legend(as.character(sp$cl),
        lwd = 5,
        bty = "n"
 )
+
