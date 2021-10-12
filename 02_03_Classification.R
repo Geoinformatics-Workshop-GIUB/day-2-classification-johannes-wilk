@@ -4,10 +4,10 @@
 #Install additional packages
 #install.packages("randomForest")
 library(randomForest)
-img <- brick (#hier muss eine Datei rein)
+#img <- brick ()
 
 #Working directory
-setwd("~/R-Kurs_WiSe2021-2022_Spatial_Analysis/Data")
+setwd("C:/Users/Johannes/Documents/1. Dokumente/3. Studium/2. Uni Bonn/1. Module/D2 R Kurs")
 
 getwd()
 
@@ -68,10 +68,10 @@ plot(result,
 #Classification: Learning Curve -------------------------------------------------
 
 #Import LS8 subset
-img <- brick("LS8_Bonn_SC20200925100850.tif")
+img <- brick("LC08_Bonn1.tif")
 
 #Import shapefile containing training data
-shp <- shapefile("training_data.shp")
+shp <- shapefile("training_data2.shp")
 
 #Load dataframe from your wd, already done for classification
 #load(file = "smp.rda")
