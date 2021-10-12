@@ -4,6 +4,7 @@
 #Install additional packages
 #install.packages("randomForest")
 library(randomForest)
+img <- brick (#hier muss eine Datei rein)
 
 #Working directory
 setwd("~/R-Kurs_WiSe2021-2022_Spatial_Analysis/Data")
@@ -20,6 +21,9 @@ summary(smp$cl)
 #Down-Sampling via minority class 
 smp.size <- rep(min(summary(smp$cl)), nlevels(smp$cl))
 smp.size
+
+smp.size
+smp <- na.omit(smp)
 
 help(tuneRF)
 rfmodel <- tuneRF(x = smp[-ncol(smp)],
